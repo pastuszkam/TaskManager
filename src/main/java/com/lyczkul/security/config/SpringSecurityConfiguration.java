@@ -23,7 +23,11 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated().and().httpBasic()
+        http.csrf().disable();
+        http.authorizeRequests()
+                .antMatchers("/api/register").permitAll()
+                .anyRequest().authenticated()
+                .and().httpBasic()
                 .authenticationEntryPoint(entryPoint);
     }
 

@@ -1,6 +1,9 @@
 package com.lyczkul.security.model;
 
+import com.lyczkul.taskmanager.model.Company;
+
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Tomek on 2017-06-05.
@@ -42,6 +45,9 @@ public class User {
         return password;
     }
 
+    @ManyToMany(mappedBy = "users")
+    private Set<Company> companies;
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -52,5 +58,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Set<Company> getCompanies() {
+        return companies;
+    }
+
+    public void setCompanies(Set<Company> companies) {
+        this.companies = companies;
     }
 }

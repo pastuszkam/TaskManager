@@ -1,6 +1,7 @@
 package com.lyczkul.security.model;
 
 import com.lyczkul.taskmanager.model.Company;
+import com.lyczkul.taskmanager.model.Task;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -25,6 +26,12 @@ public class User {
     @JoinColumn(name = "role")
     private Role role;
 
+    @OneToMany(targetEntity = Task.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Task> tasks;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Company> companies;
+
     public Long getId() {
         return id;
     }
@@ -45,9 +52,6 @@ public class User {
         return password;
     }
 
-    @ManyToMany(mappedBy = "users")
-    private Set<Company> companies;
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -66,5 +70,13 @@ public class User {
 
     public void setCompanies(Set<Company> companies) {
         this.companies = companies;
+    }
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
     }
 }

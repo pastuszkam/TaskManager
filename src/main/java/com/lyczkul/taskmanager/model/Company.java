@@ -18,6 +18,8 @@ public class Company {
 
     private String name;
 
+    private String lead;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_company", joinColumns = @JoinColumn(name = "company_id",
             referencedColumnName = "id"),
@@ -43,11 +45,27 @@ public class Company {
         this.name = name;
     }
 
+    public String getLead() {
+        return lead;
+    }
+
+    public void setLead(String lead) {
+        this.lead = lead;
+    }
+
     public Set<User> getUsers() {
         return users;
     }
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 }

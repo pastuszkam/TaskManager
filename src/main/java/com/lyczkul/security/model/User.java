@@ -1,5 +1,6 @@
 package com.lyczkul.security.model;
 
+import com.lyczkul.taskmanager.model.Comment;
 import com.lyczkul.taskmanager.model.Company;
 import com.lyczkul.taskmanager.model.Task;
 
@@ -31,6 +32,9 @@ public class User {
 
     @ManyToMany(mappedBy = "users")
     private Set<Company> companies;
+
+    @OneToMany(targetEntity = Comment.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Comment> comments;
 
     public Long getId() {
         return id;
@@ -78,5 +82,13 @@ public class User {
 
     public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

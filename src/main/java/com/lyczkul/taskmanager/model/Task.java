@@ -17,6 +17,8 @@ public class Task {
 
     private String name;
 
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "project")
     private Project project;
@@ -24,6 +26,9 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "user")
     private User user;
+
+    @OneToMany(targetEntity = Comment.class, mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Comment> comments;
 
     public Long getId() {
         return id;
@@ -41,6 +46,14 @@ public class Task {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Project getProject() {
         return project;
     }
@@ -55,5 +68,13 @@ public class Task {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

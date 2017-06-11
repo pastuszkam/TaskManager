@@ -27,7 +27,7 @@ public class User {
     @JoinColumn(name = "role")
     private Role role;
 
-    @OneToMany(targetEntity = Task.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Task.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Task> tasks;
 
     @ManyToMany(mappedBy = "users")

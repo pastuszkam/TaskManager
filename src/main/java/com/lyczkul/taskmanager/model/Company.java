@@ -26,7 +26,7 @@ public class Company {
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
     private Set<User> users;
 
-    @OneToMany(targetEntity = Project.class, mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Project.class, mappedBy = "company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Project> projects;
 
     public Long getId() {

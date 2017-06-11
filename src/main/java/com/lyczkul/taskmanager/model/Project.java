@@ -21,7 +21,7 @@ public class Project {
     @JoinColumn(name = "company")
     private Company company;
 
-    @OneToMany(targetEntity = Task.class, mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Task.class, mappedBy = "project", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Task> tasks;
 
     public Long getId() {

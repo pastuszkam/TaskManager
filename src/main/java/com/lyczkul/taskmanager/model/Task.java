@@ -27,7 +27,7 @@ public class Task {
     @JoinColumn(name = "user")
     private User user;
 
-    @OneToMany(targetEntity = Comment.class, mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Comment.class, mappedBy = "task", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
     public Long getId() {

@@ -1,4 +1,4 @@
-package com.lyczkul.taskmanager.Repository;
+package com.lyczkul.taskmanager.repository;
 
 import com.lyczkul.taskmanager.model.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;

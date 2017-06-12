@@ -1,5 +1,7 @@
 package com.lyczkul.taskmanager.model;
 
+import com.lyczkul.security.model.User;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -23,6 +25,12 @@ public class Project {
 
     @OneToMany(targetEntity = Task.class, mappedBy = "project", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Task> tasks;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_project", joinColumns = @JoinColumn(name = "project_id",
+            referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    private Set<User> users;
 
     public Long getId() {
         return id;

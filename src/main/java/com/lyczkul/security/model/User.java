@@ -2,6 +2,7 @@ package com.lyczkul.security.model;
 
 import com.lyczkul.taskmanager.model.Comment;
 import com.lyczkul.taskmanager.model.Company;
+import com.lyczkul.taskmanager.model.Project;
 import com.lyczkul.taskmanager.model.Task;
 
 import javax.persistence.*;
@@ -32,6 +33,9 @@ public class User {
 
     @ManyToMany(mappedBy = "users")
     private Set<Company> companies;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Project> projects;
 
     @OneToMany(targetEntity = Comment.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Comment> comments;

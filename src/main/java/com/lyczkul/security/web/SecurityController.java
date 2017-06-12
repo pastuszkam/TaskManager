@@ -4,9 +4,10 @@ import com.lyczkul.security.model.User;
 import com.lyczkul.security.repository.RoleRepository;
 import com.lyczkul.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Tomek on 05.06.2017.
@@ -17,13 +18,13 @@ import org.springframework.web.bind.annotation.*;
 public class SecurityController {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public User register(@RequestBody User user) {
@@ -31,5 +32,10 @@ public class SecurityController {
         user.setRole(roleRepository.findByName("user"));
         userRepository.save(user);
         return user;
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public List<User> users(){
+        return userRepository.findAll();
     }
 }

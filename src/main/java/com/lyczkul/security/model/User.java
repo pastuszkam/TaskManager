@@ -28,7 +28,7 @@ public class User {
     @JoinColumn(name = "role")
     private Role role;
 
-    @OneToMany(targetEntity = Task.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Task.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Task> tasks;
 
     @ManyToMany(mappedBy = "users")
@@ -37,7 +37,7 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private Set<Project> projects;
 
-    @OneToMany(targetEntity = Comment.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Comment.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
     public Long getId() {

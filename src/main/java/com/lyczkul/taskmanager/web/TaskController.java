@@ -1,4 +1,4 @@
-package com.lyczkul.taskmanager.controller;
+package com.lyczkul.taskmanager.web;
 
 import com.lyczkul.taskmanager.model.Task;
 import com.lyczkul.taskmanager.repository.TaskRepository;

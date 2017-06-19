@@ -40,19 +40,19 @@ public class Comment {
         this.content = content;
     }
 
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public Task getTask() {
+//        return task;
+//    }
+//
+//    public void setTask(Task task) {
+//        this.task = task;
+//    }
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }

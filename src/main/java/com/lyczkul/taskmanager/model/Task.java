@@ -27,7 +27,7 @@ public class Task {
     @JoinColumn(name = "user")
     private User user;
 
-    @OneToMany(targetEntity = Comment.class, mappedBy = "task", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Comment.class, mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
     public Long getId() {
@@ -54,21 +54,21 @@ public class Task {
         this.description = description;
     }
 
-    public Project getProject() {
-        return project;
-    }
+//    public Project getProject() {
+//        return project;
+//    }
+//
+//    public void setProject(Project project) {
+//        this.project = project;
+//    }
 
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Set<Comment> getComments() {
         return comments;

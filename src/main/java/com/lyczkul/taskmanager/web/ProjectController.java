@@ -1,4 +1,4 @@
-package com.lyczkul.taskmanager.controller;
+package com.lyczkul.taskmanager.web;
 
 import com.lyczkul.security.repository.UserRepository;
 import com.lyczkul.taskmanager.model.Project;
@@ -20,7 +20,7 @@ public class ProjectController {
     private ProjectRepository projectRepository;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @RequestMapping(value = "/projects", method = RequestMethod.GET)
     public List<Project> projects(){
         return projectRepository.findAll();

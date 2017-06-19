@@ -1,5 +1,6 @@
 package com.lyczkul.taskmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.lyczkul.security.model.User;
 
 import javax.persistence.*;
@@ -18,10 +19,12 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "task")
+    @JsonBackReference
     private Task task;
 
     @ManyToOne
     @JoinColumn(name = "user")
+    @JsonBackReference
     private User user;
 
     public Long getId() {

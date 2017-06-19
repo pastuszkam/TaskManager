@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Tomek on 05.06.2017.
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api")
 public class SecurityController {
 

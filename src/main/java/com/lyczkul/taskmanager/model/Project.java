@@ -1,5 +1,8 @@
 package com.lyczkul.taskmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lyczkul.security.model.User;
 
 import javax.persistence.*;
@@ -21,15 +24,18 @@ public class Project {
 
     @ManyToOne
     @JoinColumn(name = "company")
+    @JsonBackReference
     private Company company;
 
-    @OneToMany(targetEntity = Task.class, mappedBy = "project", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Task.class, mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Task> tasks;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_project", joinColumns = @JoinColumn(name = "project_id",
             referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    @JsonIgnoreProperties("projects")
     private Set<User> users;
 
     public Long getId() {

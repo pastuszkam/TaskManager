@@ -1,7 +1,6 @@
 package com.lyczkul.security.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import com.lyczkul.taskmanager.model.Comment;
 import com.lyczkul.taskmanager.model.Company;
 import com.lyczkul.taskmanager.model.Project;
@@ -35,10 +34,12 @@ public class User {
     @JsonManagedReference
     private Set<Task> tasks;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("users")
     private Set<Company> companies;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("users")
     private Set<Project> projects;
 
     @OneToMany(targetEntity = Comment.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -99,5 +100,13 @@ public class User {
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 }

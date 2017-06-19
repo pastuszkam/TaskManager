@@ -1,5 +1,6 @@
 package com.lyczkul.taskmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lyczkul.security.model.User;
 
@@ -19,12 +20,13 @@ public class Company {
 
     private String name;
 
-//    private String lead;
+    private String lead;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_company", joinColumns = @JoinColumn(name = "company_id",
             referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    @JsonIgnoreProperties("companies")
     private Set<User> users;
 
     @OneToMany(targetEntity = Project.class, mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -47,13 +49,13 @@ public class Company {
         this.name = name;
     }
 
-//    public String getLead() {
-//        return lead;
-//    }
-//
-//    public void setLead(String lead) {
-//        this.lead = lead;
-//    }
+    public String getLead() {
+        return lead;
+    }
+
+    public void setLead(String lead) {
+        this.lead = lead;
+    }
 
     public Set<User> getUsers() {
         return users;

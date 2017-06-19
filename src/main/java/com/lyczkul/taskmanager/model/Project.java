@@ -1,6 +1,7 @@
 package com.lyczkul.taskmanager.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lyczkul.security.model.User;
 
@@ -34,6 +35,7 @@ public class Project {
     @JoinTable(name = "user_project", joinColumns = @JoinColumn(name = "project_id",
             referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    @JsonIgnoreProperties("projects")
     private Set<User> users;
 
     public Long getId() {

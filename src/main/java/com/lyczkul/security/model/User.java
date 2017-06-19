@@ -1,5 +1,7 @@
 package com.lyczkul.security.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lyczkul.taskmanager.model.Comment;
 import com.lyczkul.taskmanager.model.Company;
 import com.lyczkul.taskmanager.model.Project;
@@ -26,9 +28,11 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "role")
+    @JsonBackReference
     private Role role;
 
     @OneToMany(targetEntity = Task.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Task> tasks;
 
     @ManyToMany(mappedBy = "users")
@@ -38,6 +42,7 @@ public class User {
     private Set<Project> projects;
 
     @OneToMany(targetEntity = Comment.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Comment> comments;
 
     public Long getId() {

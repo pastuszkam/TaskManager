@@ -1,5 +1,6 @@
 package com.lyczkul.taskmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lyczkul.security.model.User;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Company {
     private Set<User> users;
 
     @OneToMany(targetEntity = Project.class, mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Project> projects;
 
     public Long getId() {
@@ -53,13 +55,13 @@ public class Company {
 //        this.lead = lead;
 //    }
 
-//    public Set<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(Set<User> users) {
-//        this.users = users;
-//    }
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 
     public Set<Project> getProjects() {
         return projects;

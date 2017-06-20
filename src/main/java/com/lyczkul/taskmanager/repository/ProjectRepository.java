@@ -1,6 +1,7 @@
 package com.lyczkul.taskmanager.repository;
 
 import com.lyczkul.security.model.User;
+import com.lyczkul.taskmanager.model.Company;
 import com.lyczkul.taskmanager.model.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -11,4 +12,6 @@ import java.util.List;
  */
 public interface ProjectRepository extends JpaRepository<Project, Long> {
     public List<Project> findAllByUsers(User user);
+
+    public List<Project> findAllByCompany(Company company);
 }

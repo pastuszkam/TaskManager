@@ -34,6 +34,11 @@ public class SecurityController {
         return user;
     }
 
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public User user(@PathVariable(name = "id") Long id){
+        return userRepository.findOne(id);
+    }
+
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public List<User> users(){
         return userRepository.findAll();

@@ -30,6 +30,4 @@ public class ProjectController {
     public List<Project> userProjects(@PathVariable(value = "user_id") Long userId){
         return projectRepository.findAllByUsers(userRepository.findOne(userId));
     }
-
-
 }

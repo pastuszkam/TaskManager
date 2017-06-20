@@ -24,11 +24,11 @@ public class Project {
 
     @ManyToOne
     @JoinColumn(name = "company")
-    @JsonBackReference
+    @JsonBackReference(value = "project_company")
     private Company company;
 
     @OneToMany(targetEntity = Task.class, mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "project_task")
     private Set<Task> tasks;
 
     @ManyToMany(cascade = CascadeType.ALL)

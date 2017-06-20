@@ -19,12 +19,12 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "task")
-    @JsonBackReference
+    @JsonBackReference(value = "task_comment")
     private Task task;
 
     @ManyToOne
     @JoinColumn(name = "user")
-    @JsonBackReference
+    @JsonBackReference(value = "comment_user")
     private User user;
 
     public Long getId() {

@@ -34,10 +34,11 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/api/register").permitAll()
+                .antMatchers("/api/all_companies").permitAll()
                 .antMatchers("/swagger-ui.html").permitAll()
                 .antMatchers("*.css").permitAll()
                 .antMatchers("*.js").permitAll()
-//                .anyRequest().authenticated()
+                .anyRequest().authenticated()
                 .and().httpBasic()
                 .authenticationEntryPoint(entryPoint);
     }

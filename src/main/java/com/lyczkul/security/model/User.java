@@ -27,11 +27,11 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "role")
-    @JsonBackReference
+    @JsonBackReference(value = "role_user")
     private Role role;
 
     @OneToMany(targetEntity = Task.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "task_user")
     private Set<Task> tasks;
 
     @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
@@ -43,7 +43,7 @@ public class User {
     private Set<Project> projects;
 
     @OneToMany(targetEntity = Comment.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "comment_user")
     private Set<Comment> comments;
 
     public Long getId() {

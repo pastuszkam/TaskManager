@@ -23,16 +23,16 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "project")
-    @JsonBackReference
+    @JsonBackReference(value = "project_task")
     private Project project;
 
     @ManyToOne
     @JoinColumn(name = "user")
-    @JsonBackReference
+    @JsonBackReference(value = "task_user")
     private User user;
 
     @OneToMany(targetEntity = Comment.class, mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "task_comment")
     private Set<Comment> comments;
 
     public Long getId() {

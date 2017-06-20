@@ -20,7 +20,7 @@ public class Role {
     private String name;
 
     @OneToMany(targetEntity = User.class, mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "role_user")
     private Set<User> users;
 
     public Long getId() {

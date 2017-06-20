@@ -30,7 +30,7 @@ public class Company {
     private Set<User> users;
 
     @OneToMany(targetEntity = Project.class, mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "project_company")
     private Set<Project> projects;
 
     public Long getId() {

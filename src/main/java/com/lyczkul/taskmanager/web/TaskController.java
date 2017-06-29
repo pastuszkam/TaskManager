@@ -42,7 +42,7 @@ public class TaskController {
         return taskRepository.findOne(taskId);
     }
 
-    @RequestMapping(value = "create", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public Task create(@RequestBody Task task, Principal principal) {
         User user = userService.getUser(principal);
         task.setUser(user);
